@@ -23,6 +23,7 @@ for lang,t in D.items():
  html=f'''<!doctype html>
 <html lang="{lang}" dir="{'rtl' if lang=='ar' else 'ltr'}">
 <head>
+<script defer src="/plcalc-page/site-analytics.js" data-measurement-id="G-L93YZ7J7C3" data-app="calculatorx" data-site-root="/plcalc-page/"></script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title(lang))} | {e(t[1])}</title>
 <meta name="description" content="{e(t[2],quote=True)}">
@@ -58,3 +59,7 @@ for lang in D:
 (B/'sitemap.xml').write_text(sitemap+'</urlset>\n')
 (B/'.nojekyll').touch()
 print(f'Generated {len(D)} languages and sitemap.xml')
+
+# Restore the reviewed Japanese landing copy and guide after generation.
+import runpy
+runpy.run_path(str(B / "website-copy" / "apply.py"), run_name="__main__")

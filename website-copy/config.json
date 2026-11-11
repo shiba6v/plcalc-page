@@ -1,0 +1,13 @@
+{
+  "app": "calculatorx",
+  "headline": "パスコードで開く写真アルバム",
+  "lead": "写真・動画・ファイルを取り込み、フォルダに分けて保管。PINまたはパスワードでアルバムを開けます。旅行の写真や残しておきたいファイルを、用途ごとに整理できます。",
+  "title": "写真をパスコードで保管｜Photo Lock Calculator",
+  "description": "iPhone・iPadの写真、動画、ファイルをパスコード付きアルバムに保存。フォルダや検索で整理できるPhoto Lock Calculatorの使い方を紹介します。",
+  "article": "iPhoneでパスコード付きの写真アルバムを作る方法",
+  "slug": "ja/guides/iphone-photo-vault/",
+  "home": "ja/index.html",
+  "site": ".",
+  "article_url": "https://shiba6v.github.io/plcalc-page/ja/guides/iphone-photo-vault/",
+  "article_path": "/plcalc-page/ja/guides/iphone-photo-vault/"
+}
