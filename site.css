@@ -4,3 +4,5 @@
 @media(max-width:760px){.screens{height:470px}.primary{width:190px;right:20px}.secondary{width:170px;left:24px}}
 .hero-copy,.screens,.instructions{min-width:0}@media(max-width:760px){.hero,.walkthrough{grid-template-columns:minmax(0,1fr)}.screens{width:100%;max-width:350px}}
 h1,h2,h3{overflow-wrap:anywhere}
+
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.last .ctas{justify-content:center}.cta-alt{background:transparent;color:var(--text);border:1.5px solid var(--line)}.cta-alt:hover{background:var(--panel)}
