@@ -11,11 +11,11 @@
   const ja = (document.documentElement.lang || 'ja').toLowerCase().startsWith('ja');
   const labels = ja ? {
     title: 'アクセス解析について',
-    text: 'この公式サイトでは、Google Analyticsで閲覧状況とApp Storeリンクのクリックを集計します。許可した場合にのみCookieを使って計測します。アプリ内の写真・名刺・学習内容は送信しません。',
+    text: 'この公式サイトでは、Google Analyticsで閲覧状況とApp Store・Google Playリンクのクリックを集計します。許可した場合にのみCookieを使って計測します。アプリ内の写真・名刺・学習内容は送信しません。',
     accept: '許可する', reject: '許可しない', settings: 'アクセス解析の設定', policy: 'Googleのプライバシーポリシー'
   } : {
     title: 'Website analytics',
-    text: 'With your permission, this website uses Google Analytics cookies to measure page visits and App Store link clicks. Photos, business cards and learning content inside the app are not sent.',
+    text: 'With your permission, this website uses Google Analytics cookies to measure page visits and App Store and Google Play link clicks. Photos, business cards and learning content inside the app are not sent.',
     accept: 'Allow', reject: 'Do not allow', settings: 'Analytics settings', policy: 'Google Privacy Policy'
   };
   let choice = null, started = false, panel, settings;
@@ -90,9 +90,10 @@
     const target = event.target instanceof Element ? event.target.closest('a[href]') : null;
     if (!target) return;
     let url; try { url = new URL(target.href); } catch (_) { return; }
-    if (url.hostname !== 'apps.apple.com') return;
+    const store = url.hostname === 'apps.apple.com' ? 'app_store_click' : url.hostname === 'play.google.com' ? 'play_store_click' : '';
+    if (!store) return;
     const placement = target.closest('footer') ? 'footer' : target.closest('header,nav') ? 'header' : target.closest('.hero,#hero') ? 'hero' : 'body';
-    tag('event', 'app_store_click', { send_to: id, app_name: app, link_placement: placement, page_language: document.documentElement.lang || 'ja', destination_host: url.hostname, transport_type: 'beacon' });
+    tag('event', store, { send_to: id, app_name: app, link_placement: placement, page_language: document.documentElement.lang || 'ja', destination_host: url.hostname, transport_type: 'beacon' });
   });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true }); else mount();
 })();
